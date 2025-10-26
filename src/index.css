@@ -4,13 +4,34 @@
     box-sizing: border-box;
 }
 
-html, body {
+html, body, main {
     height: 100%;
 }
 
 body {
     line-height: 1.5;
     font-family: sans-serif;
+    background-color: #F5F7FB;
+    color: #293264;
+    font-family: "Karla", sans-serif;
+}
+
+main {
+    min-height: 100vh;
+}
+
+.blob1 {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: -1;
+}
+
+.blob2 {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
 }
 
 img, picture, video, canvas, svg {
@@ -19,7 +40,7 @@ img, picture, video, canvas, svg {
 }
 
 button, input, textarea, select {
-    font: inherit;
+    font-family: "Inter", sans-serif;
 }
 
 ul, ol {
