@@ -10,7 +10,11 @@ function App() {
     return (
         <main>
             <img className="blob1" src={Blob1} />
-            {!hasGameStarted ? <StartPage /> : <GamePage />}
+            {
+                !hasGameStarted ?
+                    <StartPage setHasGameStarted={setHasGameStarted} /> :
+                    <GamePage />
+            }
             <img className="blob2" src={Blob2} />
         </main>
     );
