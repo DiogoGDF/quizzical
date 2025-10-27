@@ -1,8 +1,15 @@
+import Question from "./Question";
+
 function GamePage() {
     return (
-        <>
-            <h1>Hello from Game Page</h1>
-        </>
+        <div className="game-page">
+            <Question />
+            <Question />
+            <Question />
+            <Question />
+            <Question />
+            <button>Check answers</button>
+        </div>
     );
 }
 
