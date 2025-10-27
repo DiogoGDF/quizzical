@@ -1,23 +1,31 @@
-function Question() {
+export type QuestionType = {
+    difficulty: string;
+    category: string;
+    question: string;
+    correct_answer: string;
+    incorrect_answers: string[];
+}
+
+function Question({ question }: { question: QuestionType }) {
     return (
         <section className="question">
-            <h3>Which best selling toy of 1983 caused hysteria, resulting in riots breaking in stores?</h3>
+            <h3>{question.question}</h3>
             <form>
                 <label>
                     <input type="radio" name="option" />
-                    <span>Cabbage Patch Kids</span>
+                    <span>{question.incorrect_answers[0]}</span>
                 </label>
                 <label>
                     <input type="radio" name="option" />
-                    <span>Transformers</span>
+                    <span>{question.incorrect_answers[1]}</span>
                 </label>
                 <label>
                     <input type="radio" name="option" />
-                    <span>Care Bears</span>
+                    <span>{question.incorrect_answers[2]}Care Bears</span>
                 </label>
                 <label>
                     <input type="radio" name="option" />
-                    <span>Rubik’s Cube</span>
+                    <span>{question.correct_answer}</span>
                 </label>
             </form>
         </section>

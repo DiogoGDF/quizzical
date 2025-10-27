@@ -76,7 +76,7 @@ main, .start-game {
     font-size: 14px;
     padding: 11px 22px;
     border-radius: 12px;
-    margin: 15px auto 0;
+    margin: 15px auto;
 }
 
 img, picture, video, canvas, svg {
@@ -100,7 +100,7 @@ a {
 .game-page {
     display: flex;
     flex-direction: column;
-    max-width: 600px;
+    max-width: 900px;
 }
 
 .question {
@@ -115,6 +115,7 @@ a {
 .question > form {
     display: flex;
     gap: 12px;
+    flex-wrap: wrap;
 }
 
 label > input[type="radio"] {
