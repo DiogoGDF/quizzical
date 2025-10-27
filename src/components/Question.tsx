@@ -1,23 +1,23 @@
 function Question() {
     return (
-        <section>
-            <h3>How would one say goodbye in Spanish?</h3>
+        <section className="question">
+            <h3>Which best selling toy of 1983 caused hysteria, resulting in riots breaking in stores?</h3>
             <form>
                 <label>
                     <input type="radio" name="option" />
-                    Adiós
+                    <span>Cabbage Patch Kids</span>
                 </label>
                 <label>
                     <input type="radio" name="option" />
-                    Hola
+                    <span>Transformers</span>
                 </label>
                 <label>
                     <input type="radio" name="option" />
-                    Au Revoir
+                    <span>Care Bears</span>
                 </label>
                 <label>
                     <input type="radio" name="option" />
-                    Salir
+                    <span>Rubik’s Cube</span>
                 </label>
             </form>
         </section>

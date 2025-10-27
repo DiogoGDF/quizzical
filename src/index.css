@@ -16,6 +16,10 @@ body {
     font-family: "Karla", sans-serif;
 }
 
+main {
+    padding: 0 75px;
+}
+
 main, .start-game {
     min-height: 100vh;
     display: flex;
@@ -54,14 +58,25 @@ main, .start-game {
     margin-bottom: 30px;
 }
 
-.start-page > button {
+.start-page > button, .game-page > button {
     color: #F5F7FB;
     background-color: #4D5B9E;
     border: none;
+    cursor: pointer;
+}
+
+.start-page > button {
     border-radius: 15px;
     padding: 16px 30px;
     font-size: 16px;
-    cursor: pointer;
+
+}
+
+.game-page > button {
+    font-size: 14px;
+    padding: 11px 22px;
+    border-radius: 12px;
+    margin: 15px auto 0;
 }
 
 img, picture, video, canvas, svg {
@@ -80,4 +95,46 @@ ul, ol {
 a {
     text-decoration: none;
     color: inherit;
+}
+
+.game-page {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+}
+
+.question {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    padding-bottom: 14px;
+    margin-bottom: 14px;
+    border-bottom: 1px #DBDEF0 solid;
+}
+
+.question > form {
+    display: flex;
+    gap: 12px;
+}
+
+label > input[type="radio"] {
+    display: none;
+}
+
+label > span {
+    cursor: pointer;
+    padding: 4px 12px;
+    border: 1px #4D5B9E solid;
+    border-radius: 8px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+input[type="radio"]:checked + span{
+    background-color: #D6DBF5;
+    border: 1px #D6DBF5 solid;
 }
