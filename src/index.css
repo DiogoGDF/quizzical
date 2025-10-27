@@ -16,8 +16,12 @@ body {
     font-family: "Karla", sans-serif;
 }
 
-main {
+main, .start-game {
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .blob1 {
@@ -32,6 +36,32 @@ main {
     bottom: 0;
     left: 0;
     z-index: -1;
+}
+
+.start-page {
+    text-align: center;
+}
+
+.start-page > h1 {
+    font-size: 31.25px;
+    margin-bottom: 7px;
+}
+
+.start-page > h2 {
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+
+.start-page > button {
+    color: #F5F7FB;
+    background-color: #4D5B9E;
+    border: none;
+    border-radius: 15px;
+    padding: 16px 30px;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 img, picture, video, canvas, svg {
