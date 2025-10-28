@@ -112,7 +112,7 @@ a {
     border-bottom: 1px #DBDEF0 solid;
 }
 
-.question > form {
+.question > div {
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
@@ -138,4 +138,18 @@ label > span {
 input[type="radio"]:checked + span{
     background-color: #D6DBF5;
     border: 1px #D6DBF5 solid;
+}
+
+.not-selected, .wring {
+    opacity: 50%;
+}
+
+.correct {
+    background-color: #94D7A2;
+    border: 1px #94D7A2 solid;
+}
+
+.wrong {
+    background-color: #F8BCBC;
+    border: 1px #F8BCBC solid;
 }

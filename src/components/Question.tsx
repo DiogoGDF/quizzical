@@ -8,28 +8,33 @@ export type QuestionType = {
     incorrect_answers: string[];
 }
 
-function Question({ question }: { question: QuestionType }) {
+type QuestionProps = {
+    question: QuestionType
+    answersChecked: boolean
+}
+
+function Question({ question, answersChecked }: QuestionProps) {
     return (
         <section className="question">
             <h3>{decode(question.question)}</h3>
-            <form>
+            <div>
                 <label>
-                    <input type="radio" name="option" />
+                    <input type="radio" name={question.question} value={decode(question.incorrect_answers[0])} />
                     <span>{decode(question.incorrect_answers[0])}</span>
                 </label>
                 <label>
-                    <input type="radio" name="option" />
+                    <input type="radio" name={question.question} value={decode(question.incorrect_answers[1])} />
                     <span>{decode(question.incorrect_answers[1])}</span>
                 </label>
                 <label>
-                    <input type="radio" name="option" />
-                    <span>{decode(question.incorrect_answers[2])}Care Bears</span>
+                    <input type="radio" name={question.question} value={decode(question.incorrect_answers[2])} />
+                    <span>{decode(question.incorrect_answers[2])}</span>
                 </label>
                 <label>
-                    <input type="radio" name="option" />
-                    <span>{decode(question.correct_answer)}</span>
+                    <input type="radio" name={question.question} value={decode(question.correct_answer)} />
+                    <span className={answersChecked ? "correct" : ""}>{decode(question.correct_answer)}</span>
                 </label>
-            </form>
+            </div>
         </section>
     );
 }
