@@ -4,14 +4,15 @@ import type { QuestionType } from "./Question";
 
 function GamePage({ questions }: { questions: QuestionType[] }) {
     const [answersChecked, setAnswersChecked] = useState(false);
+    const [correctAnswers, setCorrectAnswers] = useState(0);
 
     function checkAnswers(formData: FormData) {
-        const answer1 = formData.get(questions[0].question);
-        const answer2 = formData.get(questions[1].question);
-        const answer3 = formData.get(questions[2].question);
-        const answer4 = formData.get(questions[3].question);
-        const answer5 = formData.get(questions[4].question);
-
+        const total = questions.reduce((acc, question) => {
+            return (formData.get(question.question) === question.correct_answer) ?
+                acc + 1 :
+                acc;
+        }, 0);
+        setCorrectAnswers(total);
         setAnswersChecked(true);
     }
 
@@ -22,7 +23,15 @@ function GamePage({ questions }: { questions: QuestionType[] }) {
             <Question question={questions[2]} answersChecked={answersChecked} />
             <Question question={questions[3]} answersChecked={answersChecked} />
             <Question question={questions[4]} answersChecked={answersChecked} />
-            <button>Check answers</button>
+            {
+                !answersChecked ?
+                    <button>Check answers</button> :
+                    <>
+                        <span>corect answers: {correctAnswers}/5</span>
+                        <button>Play again</button>
+                    </>
+
+            }
         </form>
     );
 }
