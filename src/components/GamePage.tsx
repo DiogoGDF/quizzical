@@ -52,11 +52,11 @@ function GamePage({ questions, hasGameStarted, setHasGameStarted, setQuestions }
             })}
             {
                 !answersChecked ?
-                    <button>Check answers</button> :
-                    <>
+                    <button className="game-page-btn">Check answers</button> :
+                    <div>
                         <span>corect answers: {correctAnswers}/5</span>
-                        <button>Play again</button>
-                    </>
+                        <button className="game-page-btn">Play again</button>
+                    </div>
 
             }
         </form>
