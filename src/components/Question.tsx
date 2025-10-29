@@ -11,29 +11,33 @@ export type QuestionType = {
 type QuestionProps = {
     question: QuestionType
     answersChecked: boolean
+    userAnswers: { [question: string]: string };
 }
 
-function Question({ question, answersChecked }: QuestionProps) {
+function Question({ question, answersChecked, userAnswers }: QuestionProps) {
+    function getClass(answer: string) {
+        if (!answersChecked) return "";
+        const isCorrect = answer === question.correct_answer;
+        const isSelected = userAnswers[question.question] === answer;
+
+        if (isCorrect) return "correct";
+        if (isSelected && !isCorrect) return "wrong";
+        return "";
+    }
+
     return (
         <section className="question">
             <h3>{decode(question.question)}</h3>
             <div>
-                <label>
-                    <input type="radio" name={question.question} value={decode(question.incorrect_answers[0])} />
-                    <span>{decode(question.incorrect_answers[0])}</span>
-                </label>
-                <label>
-                    <input type="radio" name={question.question} value={decode(question.incorrect_answers[1])} />
-                    <span>{decode(question.incorrect_answers[1])}</span>
-                </label>
-                <label>
-                    <input type="radio" name={question.question} value={decode(question.incorrect_answers[2])} />
-                    <span>{decode(question.incorrect_answers[2])}</span>
-                </label>
-                <label>
-                    <input type="radio" name={question.question} value={decode(question.correct_answer)} />
-                    <span className={answersChecked ? "correct" : ""}>{decode(question.correct_answer)}</span>
-                </label>
+                {[...question.incorrect_answers, question.correct_answer].map((ans, i) => (
+                    <label key={i}>
+                        <input
+                            type="radio"
+                            name={question.question}
+                            value={decode(ans)} />
+                        <span className={getClass(ans)}>{decode(ans)}</span>
+                    </label>
+                ))}
             </div>
         </section>
     );
