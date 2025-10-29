@@ -17,7 +17,7 @@ type QuestionProps = {
 function Question({ question, answersChecked, userAnswers }: QuestionProps) {
     function shuffleArray<T>(arr: T[]): T[] {
         for (let i = arr.length - 1; i > 0; i--) {
-            const randIndex = Math.floor(Math.random() * i);
+            const randIndex = Math.floor(Math.random() * (i + 1));
             [arr[i], arr[randIndex]] = [arr[randIndex], arr[i]];
         }
         return arr;
