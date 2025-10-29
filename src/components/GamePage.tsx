@@ -2,28 +2,41 @@ import Question from "./Question";
 import { useState } from "react";
 import type { QuestionType } from "./Question";
 
-function GamePage({ questions }: { questions: QuestionType[] }) {
+type GamePageProps = {
+    questions: QuestionType[]
+    hasGameStarted: boolean
+    setHasGameStarted: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+function GamePage({ questions, hasGameStarted, setHasGameStarted }: GamePageProps) {
     const [answersChecked, setAnswersChecked] = useState(false);
     const [correctAnswers, setCorrectAnswers] = useState(0);
     const [userAnswers, setUserAnswers] = useState<{ [question: string]: string }>({});
 
     function checkAnswers(formData: FormData) {
-        const answers: { [q: string]: string } = {};
+        if (hasGameStarted) {
+            const answers: { [q: string]: string } = {};
 
-        questions.forEach(q => {
-            const selected = formData.get(q.question);
-            if (selected) answers[q.question] = selected.toString();
-        });
+            questions.forEach(q => {
+                const selected = formData.get(q.question);
+                if (selected) answers[q.question] = selected.toString();
+            });
 
-        setUserAnswers(answers);
+            setUserAnswers(answers);
 
-        const total = questions.reduce((acc, question) => {
-            return (formData.get(question.question) === question.correct_answer) ?
-                acc + 1 :
-                acc;
-        }, 0);
-        setCorrectAnswers(total);
-        setAnswersChecked(true);
+            const total = questions.reduce((acc, question) => {
+                return (formData.get(question.question) === question.correct_answer) ?
+                    acc + 1 :
+                    acc;
+            }, 0);
+            setCorrectAnswers(total);
+            setAnswersChecked(true);
+            setHasGameStarted(false);
+        } else {
+            setCorrectAnswers(0);
+            setAnswersChecked(false);
+            setHasGameStarted(true);
+        }
     }
 
     return (

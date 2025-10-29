@@ -19,11 +19,15 @@ function App() {
         <main>
             <img className="blob1" src={Blob1} />
             {
-                !hasGameStarted ?
+                (!hasGameStarted && questions.length === 0) ?
                     <StartPage setHasGameStarted={setHasGameStarted} /> :
                     questions.length === 0 ?
                         <h3>Loading...</h3> :
-                        <GamePage questions={questions} />
+                        <GamePage
+                            questions={questions}
+                            hasGameStarted={hasGameStarted}
+                            setHasGameStarted={setHasGameStarted}
+                        />
             }
             <img className="blob2" src={Blob2} />
         </main>
