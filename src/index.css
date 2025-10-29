@@ -143,7 +143,7 @@ input[type="radio"]:checked + span{
     border: 1px #D6DBF5 solid;
 }
 
-.not-selected, .wring {
+.not-selected, .wrong {
     opacity: 50%;
 }
 

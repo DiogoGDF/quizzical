@@ -1,5 +1,6 @@
 import { decode } from "html-entities";
 import type { QuestionType } from "../App";
+import { useState } from "react";
 
 type QuestionProps = {
     question: QuestionType
@@ -16,7 +17,7 @@ function Question({ question, answersChecked, userAnswers }: QuestionProps) {
         return arr;
     }
 
-    const allAnswers = shuffleArray([...question.incorrect_answers, question.correct_answer]);
+    const [allAnswers] = useState(shuffleArray([...question.incorrect_answers, question.correct_answer]));
 
     function getClass(answer: string) {
         if (!answersChecked) return "";

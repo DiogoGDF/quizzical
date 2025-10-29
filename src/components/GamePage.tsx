@@ -30,10 +30,12 @@ function GamePage({ questions, hasGameStarted, setHasGameStarted, setQuestions }
                     acc + 1 :
                     acc;
             }, 0);
+
             setCorrectAnswers(total);
             setAnswersChecked(true);
             setHasGameStarted(false);
-        } else {
+        }
+        else {
             setCorrectAnswers(0);
             setAnswersChecked(false);
             setHasGameStarted(true);
