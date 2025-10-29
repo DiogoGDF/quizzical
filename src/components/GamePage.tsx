@@ -43,31 +43,13 @@ function GamePage({ questions, hasGameStarted, setHasGameStarted, setQuestions }
 
     return (
         <form action={checkAnswers} className="game-page">
-            <Question
-                question={questions[0]}
-                answersChecked={answersChecked}
-                userAnswers={userAnswers}
-            />
-            <Question
-                question={questions[1]}
-                answersChecked={answersChecked}
-                userAnswers={userAnswers}
-            />
-            <Question
-                question={questions[2]}
-                answersChecked={answersChecked}
-                userAnswers={userAnswers}
-            />
-            <Question
-                question={questions[3]}
-                answersChecked={answersChecked}
-                userAnswers={userAnswers}
-            />
-            <Question
-                question={questions[4]}
-                answersChecked={answersChecked}
-                userAnswers={userAnswers}
-            />
+            {questions.map(question => {
+                return <Question
+                    question={question}
+                    answersChecked={answersChecked}
+                    userAnswers={userAnswers}
+                />;
+            })}
             {
                 !answersChecked ?
                     <button>Check answers</button> :
