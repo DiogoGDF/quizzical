@@ -15,6 +15,16 @@ type QuestionProps = {
 }
 
 function Question({ question, answersChecked, userAnswers }: QuestionProps) {
+    function shuffleArray<T>(arr: T[]): T[] {
+        for (let i = arr.length - 1; i > 0; i--) {
+            const randIndex = Math.floor(Math.random() * i);
+            [arr[i], arr[randIndex]] = [arr[randIndex], arr[i]];
+        }
+        return arr;
+    }
+
+    const allAnswers = shuffleArray([...question.incorrect_answers, question.correct_answer]);
+
     function getClass(answer: string) {
         if (!answersChecked) return "";
         const isCorrect = answer === question.correct_answer;
@@ -29,7 +39,7 @@ function Question({ question, answersChecked, userAnswers }: QuestionProps) {
         <section className="question">
             <h3>{decode(question.question)}</h3>
             <div>
-                {[...question.incorrect_answers, question.correct_answer].map((ans, i) => (
+                {allAnswers.map((ans, i) => (
                     <label key={i}>
                         <input
                             type="radio"
