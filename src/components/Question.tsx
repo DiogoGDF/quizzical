@@ -1,12 +1,5 @@
 import { decode } from "html-entities";
-
-export type QuestionType = {
-    difficulty: string;
-    category: string;
-    question: string;
-    correct_answer: string;
-    incorrect_answers: string[];
-}
+import type { QuestionType } from "../App";
 
 type QuestionProps = {
     question: QuestionType

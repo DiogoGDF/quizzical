@@ -1,14 +1,15 @@
 import Question from "./Question";
 import { useState } from "react";
-import type { QuestionType } from "./Question";
+import type { QuestionType } from "../App";
 
 type GamePageProps = {
     questions: QuestionType[]
     hasGameStarted: boolean
     setHasGameStarted: React.Dispatch<React.SetStateAction<boolean>>
+    setQuestions: React.Dispatch<React.SetStateAction<QuestionType[]>>
 }
 
-function GamePage({ questions, hasGameStarted, setHasGameStarted }: GamePageProps) {
+function GamePage({ questions, hasGameStarted, setHasGameStarted, setQuestions }: GamePageProps) {
     const [answersChecked, setAnswersChecked] = useState(false);
     const [correctAnswers, setCorrectAnswers] = useState(0);
     const [userAnswers, setUserAnswers] = useState<{ [question: string]: string }>({});
@@ -36,6 +37,7 @@ function GamePage({ questions, hasGameStarted, setHasGameStarted }: GamePageProp
             setCorrectAnswers(0);
             setAnswersChecked(false);
             setHasGameStarted(true);
+            setQuestions([]);
         }
     }
 

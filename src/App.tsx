@@ -4,9 +4,18 @@ import GamePage from "./components/GamePage";
 import Blob1 from "./images/blob1.svg";
 import Blob2 from "./images/blob2.svg";
 
+export type QuestionType = {
+    difficulty: string;
+    category: string;
+    question: string;
+    correct_answer: string;
+    incorrect_answers: string[];
+}
+
+
 function App() {
     const [hasGameStarted, setHasGameStarted] = useState(false);
-    const [questions, setQuestions] = useState([]);
+    const [questions, setQuestions] = useState<QuestionType[]>([]);
 
     useEffect(() => {
         if (!hasGameStarted) return;
@@ -27,6 +36,7 @@ function App() {
                             questions={questions}
                             hasGameStarted={hasGameStarted}
                             setHasGameStarted={setHasGameStarted}
+                            setQuestions={setQuestions}
                         />
             }
             <img className="blob2" src={Blob2} />
